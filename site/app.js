@@ -144,7 +144,17 @@ function render() {
     renderArticle();
   }
 }
+function updateThemeControl() {
+  const label =
+    document.documentElement.dataset.theme === "dark"
+      ? ui[language].lightTheme
+      : ui[language].darkTheme;
+  get("#theme-toggle").setAttribute("aria-label", label);
+  get("#theme-toggle").setAttribute("title", label);
+}
+document.addEventListener("themechange", updateThemeControl);
 function translateShell() {
+  updateThemeControl();
   const copy = ui[language];
   document.documentElement.lang = language;
   document

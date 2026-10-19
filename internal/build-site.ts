@@ -11,7 +11,13 @@ writeFileSync(
   join(output, "index.html"),
   template.replace("<!-- DICTIONARY_DATA -->", json)
 );
-for (const file of ["app.js", "i18n.js", "search.js", "styles.css"]) {
+for (const file of [
+  "app.js",
+  "i18n.js",
+  "search.js",
+  "theme.js",
+  "styles.css",
+]) {
   copyFileSync(join(root, "site", file), join(output, file));
 }
 for (const [packageName, file] of [
