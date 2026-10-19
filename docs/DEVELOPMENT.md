@@ -27,6 +27,8 @@ Set `PORT` if that port is already in use. Stop the process with Ctrl-C.
 No API keys, backend, external font requests or paid services are needed.
 The build writes `dist/`; it does not publish or deploy anything.
 GitHub Actions are disabled on this fork. No hosted CI is needed.
+The live reader is hosted on Vercel. See [DEPLOYMENT.md](./DEPLOYMENT.md)
+for the production domain and manual deployment workflow.
 
 ## Architecture
 

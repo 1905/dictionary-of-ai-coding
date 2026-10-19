@@ -23,6 +23,20 @@
 > · [Screenshots and browser QA](docs/QA.md)
 > · [О переводе на русский](docs/TRANSLATING.md#plain-russian-informed-by-asd-ste100)
 
+## Live site and deployment
+
+This bilingual reader is deployed on **Vercel** at
+[https://dictionary-of-ai-coding-three.vercel.app](https://dictionary-of-ai-coding-three.vercel.app).
+
+[Русский](https://dictionary-of-ai-coding-three.vercel.app/?lang=ru) ·
+[English](https://dictionary-of-ai-coding-three.vercel.app/?lang=en)
+
+Releases are built on Dell and uploaded manually with the Vercel CLI.
+Git pushes do not automatically deploy the site; GitHub Actions is disabled.
+See [Deployment workflow](docs/DEPLOYMENT.md) for build, upload and verification steps.
+
+## About this dictionary
+
 **AI coding can feel like it's just for experts**. Unexplained jargon. Mysterious failures. Bills that don't seem to match the work.
 
 It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that benefits from keeping it hard to understand**.
