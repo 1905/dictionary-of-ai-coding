@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="The vocabulary of AI coding. A complete English and Russian dictionary with bilingual search."
+    />
+    <meta name="theme-color" content="#fbfbfc" />
+    <title>AI Coding Dictionary</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161a'/%3E%3Ctext x='9' y='44' font-family='Arial' font-size='32' fill='white'%3EAI%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-ui="skip">Skip to dictionary</a>
+    <div class="page">
+      <header class="topbar">
+        <a href="#" class="brand" lang="en"
+          >AI Coding Dictionary<span id="brand-subtitle"></span
+        ></a>
+        <div class="languages" role="group" aria-label="Language">
+          <button
+            type="button"
+            data-language="en"
+            lang="en"
+            aria-pressed="true"
+          >
+            English
+          </button>
+          <button
+            type="button"
+            data-language="ru"
+            lang="ru"
+            aria-pressed="false"
+          >
+            Русский
+          </button>
+        </div>
+      </header>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title"></h1>
+          <p id="hero-intro"></p>
+          <a
+            class="attribution"
+            href="https://www.aihero.dev/ai-coding-dictionary"
+            data-ui="attribution"
+          ></a>
+        </div>
+        <nav class="taxonomy" aria-label="Sections"></nav>
+      </section>
+      <div class="dictionary-layout">
+        <aside class="sidebar">
+          <div class="search-box" role="search">
+            <label for="search" data-ui="search"></label>
+            <div class="search-control">
+              <input
+                type="search"
+                id="search"
+                autocomplete="off"
+                spellcheck="false"
+                aria-controls="content"
+              />
+              <button
+                id="clear-search"
+                type="button"
+                aria-label="Clear search"
+                hidden
+              >
+                ×
+              </button>
+            </div>
+          </div>
+          <details class="section-menu" open>
+            <summary data-ui="sections">Sections</summary>
+            <nav id="section-nav" aria-label="Sections"></nav>
+          </details>
+        </aside>
+        <main id="main" tabindex="-1">
+          <p
+            id="result-status"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+          <div id="content"></div>
+        </main>
+      </div>
+      <footer>
+        <span data-ui="translationCredit"></span>
+        <div>
+          <a
+            href="https://github.com/1905/dictionary-of-ai-coding"
+            data-ui="source"
+          ></a>
+          <a
+            href="https://www.aihero.dev/ai-coding-dictionary"
+            data-ui="original"
+          ></a>
+        </div>
+      </footer>
+    </div>
+    <noscript>
+      <p>
+        This reader needs JavaScript. Read the
+        <a href="https://github.com/1905/dictionary-of-ai-coding#readme"
+          >English dictionary</a
+        >
+        or the
+        <a
+          href="https://github.com/1905/dictionary-of-ai-coding/tree/main/translations/ru"
+          lang="ru"
+          >русские статьи</a
+        >
+        on GitHub.
+      </p>
+    </noscript>
+    <script id="dictionary-data" type="application/json">
+      <!-- DICTIONARY_DATA -->
+    </script>
+  </body>
+</html>

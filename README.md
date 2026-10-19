@@ -16,6 +16,13 @@
 
 # AI Coding Dictionary
 
+> **English / Русский reader:** This fork includes a complete bilingual reader.
+> English terms stay primary; Russian mode adds translations and Russian explanations.
+> Run `npm ci && npm run build && npm run preview`, then open `http://127.0.0.1:4173`.
+> [Development and checks](docs/DEVELOPMENT.md) · [Translation maintenance](docs/TRANSLATING.md)
+> · [Screenshots and browser QA](docs/QA.md)
+> · [О переводе на русский](docs/TRANSLATING.md#plain-russian-informed-by-asd-ste100)
+
 **AI coding can feel like it's just for experts**. Unexplained jargon. Mysterious failures. Bills that don't seem to match the work.
 
 It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that benefits from keeping it hard to understand**.
