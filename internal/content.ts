@@ -164,12 +164,21 @@ export function loadDictionary(base = root): Dictionary {
         if (!ru.body.includes("`" + literal + "`"))
           throw new Error(`${term}: missing code identifier ${literal}`);
       }
+      const enHtml = renderMarkdown(en.body, known);
+      const ruHtml = renderMarkdown(ru.body, known);
+      const translatedLinks = new Set(
+        [...ruHtml.matchAll(/<a href="(#[^"]+)"/g)].map((match) => match[1]!)
+      );
+      for (const [, target] of enHtml.matchAll(/<a href="(#[^"]+)"/g)) {
+        if (!translatedLinks.has(target!))
+          throw new Error(`${term}: missing canonical internal link ${target}`);
+      }
       return {
         id: slug(term),
         term,
         section: section.id,
-        en: { ...en, title: term, html: renderMarkdown(en.body, known) },
-        ru: { ...ru, html: renderMarkdown(ru.body, known) },
+        en: { ...en, title: term, html: enHtml },
+        ru: { ...ru, html: ruHtml },
       };
     })
   );

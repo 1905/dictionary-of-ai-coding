@@ -24,8 +24,8 @@ fall back to English paragraphs when an article is missing.
 The review command records a hash; it does not translate or certify quality.
 Do not update hashes just to silence a failure. The build deliberately fails when
 English has changed since the Russian review. It also rejects missing or extra
-entries, missing Russian titles/summaries/examples, invalid links, raw HTML and
-lost inline code identifiers.
+entries, missing Russian titles/summaries/examples, invalid links, lost canonical
+internal links, raw HTML and lost inline code identifiers.
 
 For a new term, add both Markdown files and its curriculum position, then record
 its review. Add a new section's Russian name in `site/i18n.js`. Translate new UI

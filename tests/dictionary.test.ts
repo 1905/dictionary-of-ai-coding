@@ -41,6 +41,19 @@ test("every curriculum term has a complete Russian companion and stable English 
     assert.equal(entry.id, slug(entry.term));
   }
 });
+test("translations preserve canonical internal link targets", () => {
+  const targets = (html: string) =>
+    [
+      ...new Set([...html.matchAll(/<a href="(#[^"]+)"/g)].map((m) => m[1]!)),
+    ].sort();
+  for (const entry of data.entries) {
+    assert.deepEqual(
+      targets(entry.ru.html),
+      targets(entry.en.html),
+      entry.term + ": translated internal links must match the English source"
+    );
+  }
+});
 test("Russian and English UI keys remain in parity", () => {
   assert.deepEqual(Object.keys(ui.ru), Object.keys(ui.en));
 });
@@ -102,7 +115,7 @@ test("legacy upstream descriptions with colons remain readable without source ed
   );
   assert.equal(entry.description, "A handoff: in memory.");
 });
-test("source drift and missing translations stop the build instead of silently falling back", () => {
+test("source drift, missing translations and lost links stop the build", () => {
   const temporary = mkdtempSync(join(tmpdir(), "dictionary-test-"));
   try {
     for (const folder of ["dictionary", "translations", "internal"])
@@ -111,6 +124,19 @@ test("source drift and missing translations stop the build instead of silently f
     writeFileSync(source, readFileSync(source, "utf8") + "\nChanged source.\n");
     assert.throws(() => loadDictionary(temporary), /English changed/);
     cpSync(join(root, "dictionary/Token.md"), source);
+    const translated = join(temporary, "translations/ru/Smart zone.md");
+    const original = readFileSync(translated, "utf8");
+    const missingLink = original.replace(
+      "[передайте работу](./Handoff.md)",
+      "передайте работу"
+    );
+    assert.notEqual(missingLink, original);
+    writeFileSync(translated, missingLink);
+    assert.throws(
+      () => loadDictionary(temporary),
+      /Smart zone: missing canonical internal link #handoff/
+    );
+    writeFileSync(translated, original);
     rmSync(join(temporary, "translations/ru/Token.md"));
     assert.throws(() => loadDictionary(temporary), /coverage/);
   } finally {
